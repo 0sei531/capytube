@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+
+<body>
+    {# Navbar start #}
+    <nav class="navbar navbar-expand-lg navbar-light static-top container-fluid font-weight-bold"
+        style="background-color: lightblue;">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto text-center text-justify">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Movie Recommendations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('svdIndex') }}">SVD Algorithm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View Movies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {# Navbar end #}
+    <br>
+    {# Main Container #}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Recommended Movies</h4>
+                        <hr>
+                        <br>
+                        {{ predictionAction }}<br>
+                        <hr>
+                        {{ predictionDrama }}<br>
+                        <hr>
+                        {{ predictionComedy }}<br>
+                        <hr>
+                        {{ predictionOverall }}<br>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
