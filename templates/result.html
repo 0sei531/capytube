@@ -1,64 +1,71 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Movie Recommendation System</title>
+    <title>Movie Recommendations</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
-
 <body>
-    {# Navbar start #}
-    <nav class="navbar navbar-expand-lg navbar-light static-top container-fluid font-weight-bold"
-        style="background-color: lightblue;">
-
+    <nav class="navbar navbar-expand-lg navbar-light static-top container-fluid font-weight-bold" style="background-color: lightblue;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto text-center text-justify">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('home') }}">Movie Recommendations</a>
+                    <a class="nav-link" href="{{ url_for('home') }}">KNN</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('svdIndex') }}">SVD Algorithm</a>
+                    <a class="nav-link" href="{{ url_for('svdIndex') }}">SVD</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">View Movies</a>
+                    <a class="nav-link" href="#">View</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
         </div>
     </nav>
-    {# Navbar end #}
-    <br>
-    {# Main Container #}
-    <div class="container-fluid">
+
+    <div class="container-fluid mt-4">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
-                <div class="card card-signin my-5">
+            <div class="col-12">
+                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title text-center">Recommended Movies</h4>
                         <hr>
-                        <br>
-                        {{ predictionAction }}<br>
-                        <hr>
-                        {{ predictionDrama }}<br>
-                        <hr>
-                        {{ predictionComedy }}<br>
-                        <hr>
-                        {{ predictionOverall }}<br>
-                        <hr>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Genres</th>
+                                        <th>Mean Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for index, row in prediction.iterrows() %}
+                                    <tr>
+                                        <td>{{ row['title'] }}</td>
+                                        <td>{{ row['genres'] }}</td>
+                                        <td>{{ row['MeanRating']|round(2) }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>

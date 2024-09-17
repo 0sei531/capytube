@@ -1,64 +1,62 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Movie Recommendations</title>
+    <title>SVD - Movie Recommendation</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
-
 <body>
-    {# navbar start #}
-    <nav class="navbar navbar-expand-lg navbar-light static-top container-fluid font-weight-bold"
-        style="background-color: lightblue;">
-
+    <nav class="navbar navbar-expand-lg navbar-light static-top container-fluid font-weight-bold" style="background-color: lightblue;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto text-center text-justify">
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ url_for('home') }}">Popular Movies</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">KNN</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ url_for('knn_recommendation') }}">KNN Recommendations</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('svdIndex') }}">SVD</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="{{ url_for('svd_recommendation') }}">SVD Recommendations</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">View</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
             </ul>
         </div>
     </nav>
-    {# navbar end #}
-    <br>
-    {#container#}
-    <div class="container-fluid">
-        <div class="row ">
-            <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
-                <div class="card card-signin my-5">
+
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-sm-8 col-md-7 col-lg-6 mx-auto">
+                <div class="card card-signin">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Recommended Movies</h4>
+                        <h4 class="card-title text-center">SVD Movie Recommendation</h4>
                         <hr>
-                        <br>
-                        <h5>Top Recommendation (Based on KNN)</h5>
-                        {{ knn_prediction }}<br>
-                        <hr>
-                        <h5>Top Recommendation (Based on SVD)</h5>
-                        {{ svd_prediction }}<br>
-                        <hr>
-                        <h5>Other Recommended Movies</h5>
-                        {{ other_recommendations }}<br>
+                        <form action="{{ url_for('svd') }}" method="POST">
+                            <div class="form-label-group">
+                                <input type="number" id="svd" name="svd" class="form-control" placeholder="User ID" required autofocus>
+                                <label for="svd">User ID</label>
+                            </div>
+                            <div class="container-fluid">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block text-uppercase font-weight-bold mb-2">
+                                    Get Recommendations
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
