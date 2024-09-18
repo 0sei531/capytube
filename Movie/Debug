@@ -1,0 +1,15 @@
+import pandas as pd
+
+# Load CSV data
+movies_df = pd.read_csv('Movie/Movies.csv')
+ratings_df = pd.read_csv('Movie/Ratings.csv')
+
+print("Movies DataFrame Columns:")
+print(movies_df.columns)
+print("\nRatings DataFrame Columns:")
+print(ratings_df.columns)
+
+print("\nFirst few rows of Movies DataFrame:")
+print(movies_df.head())
+print("\nFirst few rows of Ratings DataFrame:")
+print(ratings_df.head())

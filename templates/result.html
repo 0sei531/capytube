@@ -15,7 +15,7 @@
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav ml-auto text-center text-justify">
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('home') }}">KNN</a>
                 </li>
                 <li class="nav-item">
@@ -36,7 +36,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title text-center">Recommended Movies</h4>
+                        <h4 class="card-title text-center">KNN Recommended Movies</h4>
                         <hr>
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -52,7 +52,7 @@
                                     <tr>
                                         <td>{{ row['title'] }}</td>
                                         <td>{{ row['genres'] }}</td>
-                                        <td>{{ row['MeanRating']|round(2) }}</td>
+                                        <td>{{ row['mean_rating']|round(2) }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -69,3 +69,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
